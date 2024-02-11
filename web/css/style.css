@@ -1,0 +1,184 @@
+body{
+    background: linear-gradient(to right, #755062, #624A64, #4F405D, #4A4062, #403F61, #2C3256, #1E2949, #182746, #152242, #0D0E22);
+    color : white;
+    font-family: "Segoe UI","Yu Gothic","YuGothic",sans-serif;
+    text-shadow:1px 1px 0 #000,-1px 1px 0 #000,1px -1px 0 #000,-1px -1px 0 #000;
+    font-weight:bold;
+}
+textarea,input{
+    background-color: transparent;
+    color : white;
+    font-family: "Segoe UI","Yu Gothic","YuGothic",sans-serif;
+    text-shadow:1px 1px 0 #000,-1px 1px 0 #000,1px -1px 0 #000,-1px -1px 0 #000;
+    font-weight:bold;
+}
+
+textarea{
+    border: 1px solid black;
+    resize: none;
+}
+input{
+    border: 1px solid red;
+}
+
+canvas{
+    position: relative;
+}
+
+/*コンテンツ*/
+div#ChartContent{
+    color: rgb(222, 222, 222);
+    margin-top: 3em;
+}
+div#ChartContents{
+    color: rgb(222, 222, 222);
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 80vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+div.item{
+    border: 1px solid rgb(0, 255, 38);
+    padding: 1px 5px;
+    margin: 10px;
+    width: 17vw;
+    text-align: center;
+}
+div.item > img{
+    width: 80%;
+}
+
+div.item > div.chartID{
+    font-size: 0.8em;
+}
+
+div.item > div.title{
+    font-size: 1.2em;
+    text-align: left;
+}
+/*コンテンツここまで*/
+textarea{
+    height: 60vh;
+    width: 30vw;
+}
+
+#player{
+    border: 1px solid black;
+    border-radius: 0.5em;
+}
+
+#youtubePlayer{
+    display: flex;
+    justify-content: center;
+    width:100vw;
+    position: relative;
+    /* left:7vw;
+    height:13.35em; */
+}
+
+#lyricsArea{
+    position: relative;
+    justify-content: center;
+    min-height: 15em;
+    height: auto;
+    pointer-events: none;
+    max-height: 20em;
+}
+
+#TypingArea{
+    margin-bottom: 20vh;
+    width: 85vw;
+}
+
+#TypingAreaParent{
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+}
+progress{
+    width: 85vw;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    height: 5px;
+    position : absolute;
+    
+}
+
+#progressBar::-webkit-progress-value {
+    background-color: #17a2b8; /* プログレスバーの色 */
+}
+#progressBar1::-webkit-progress-value {
+    background-color: #ffc107; /* プログレスバーの色 */
+}
+
+
+/*ここから歌詞表示関連*/
+div.yomiLyrics{
+    font-size: 1.9em;
+}
+div.romaLyrics{
+    font-size: 1.7em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+#nextArea{
+    
+}
+#romaArea,#yomiArea{
+    display: flex;
+    overflow: hidden;
+    white-space: pre;
+}
+
+
+div#kashiA{
+    margin-top: 0.3em;
+    font-size: 1.9em;
+    text-shadow:none;
+}
+#nextA{
+    font-size: 1.6em;
+    color: bisque;
+    display: flex;
+	position: absolute;
+	bottom: 1vh;
+    width: 60vw;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+#yomiA,#romaA{
+    color: #0099CC;
+}
+#yomiA,#yomiB,#romaA,#romaB,#kashiA,#nextA{
+    min-height: 1em;
+}
+/*min-heightで歌詞がない場合ずれるのを防止*/
+/*歌詞表示関連ここまで*/
+
+#statusArea{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 10em;
+    background-color:#00000053;
+}
+.statusContent{
+    margin: 10px;
+    font-size: 1.2em;
+    width: calc(25% - 10px * 2);
+    height: 1.2em;
+}
+
+.status_span{
+    display: inline-flex;
+    font-size: 1.4em;
+    width: 3em;
+    margin-left: 0.1em;
+    border-bottom: solid 1px rgb(222, 222, 222);;
+}

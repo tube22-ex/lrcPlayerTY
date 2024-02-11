@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="/eel.js"></script>
+    <script src="js\keygraph.js"></script>
+    <script src="js\sound.js"></script>
+    <link rel="stylesheet" href="css\reset.css">
+    <link rel="stylesheet" href="css\style.css">
+    <title>lrcPlayer</title>
+</head>
+<body>
+    <div id="youtubePlayer">
+        <div id="player"></div>
+    </div>
+    <canvas id="canvas"></canvas>
+    <div id="TypingAreaParent">
+        <div id="TypingArea">
+            <progress id="progressBar"></progress>
+            <div id="lyricsArea">
+                <div id="yomiArea">
+                    <div id="yomiA" class="yomiLyrics"></div>
+                    <div id="yomiB" class="yomiLyrics"></div>
+                </div>
+                <div id="romaArea">
+                    <div id="romaA" class="romaLyrics"></div>
+                    <div id="romaB" class="romaLyrics"></div>
+                </div>
+                <div id="kashiArea">
+                    <div id="kashiA"></div>
+                </div>
+                <div id="nextArea">
+                    <div id="nextA"></div>
+                </div>
+            </div>
+            <canvas id="canvas1"></canvas>
+            <progress id="progressBar1"></progress>
+            <div id="statusArea">
+                <div class="statusContent"><span>Score</span><span id="status_score" class="status_span">0</span></div>
+                <div class="statusContent"><span>Miss</span><span id="status_miss" class="status_span">0</span></div>
+                <div class="statusContent"><span>Lost</span><span id="status_lost" class="status_span">0</span></div>
+                <div class="statusContent"><span>打/秒</span><span id="status_kps" class="status_span">0</span></div>
+                <div class="statusContent"><span>正確性</span><span id="status_acc" class="status_span">0</span></div>
+                <div class="statusContent"><span>Type</span><span id="status_types" class="status_span">0</span></div>
+                <div class="statusContent"><span>Clear</span><span id="status_clearLines" class="status_span">0</span></div>
+                <div class="statusContent"><span>Line</span><span id="status_lines" class="status_span">0</span></div>
+            </div>
+        </div>
+    </div>
+    <div id="controlPanel">
+        <button id="FileNameGetBtn">全ファイル取得</button>
+        <input type="number" id="searchNumber"><button id="searchBtn">取得</button>
+    </div>
+    <div id="ContentArea">
+        <!-- 何故かここに要素を書いてもばぐって追加されない -->
+    </div>
+    <div id="ChartContents"></div>
+    <div id="lrcArea">
+        <textarea id = "kashi" cols="30" rows="10"></textarea><br>
+        <textarea id = "yomi" cols="30" rows="10"></textarea><br>
+        <textarea id = "url" cols="30" rows="10"></textarea>
+    
+    </div>
+    <div id="settingArea">
+        <div id="missSoundvolume">
+            <input type="range" id="missSoundRange" min="0" max="1" step="0.01">
+            ミス音量：<span id="missSoundVolumeValue"></span>
+            <input type="checkbox" id="missSoundCheckbox">
+        </div>
+        <div id="clearSoundvolume">
+            <input type="range" id="clearSoundRange" min="0" max="1" step="0.01">
+            クリア音量：<span id="clearSoundVolumeValue"></span>
+            <input type="checkbox" id="clearSoundCheckbox">
+        </div>
+        <div id="typeSoundvolume">
+            <input type="range" id="typeSoundRange" min="0" max="1" step="0.01">
+            タイプ音量：<span id="typeSoundVolumeValue"></span>
+            <input type="checkbox" id="typeSoundCheckbox">
+        </div>
+        <div id="videoSoundvolume">
+            <input type="range" id="videoSoundRange" min="0" max="100" step="1">
+            動画音量：<span id="videoSoundVolumeValue"></span>
+        </div>
+    </div>
+    <script src="js\init.js"></script>
+    <script src="js\script.js"></script>
+    <script src="js\canvas.js"></script>
+    <script src="js\aryToObj.js"></script>
+    <script src="js\showLyrics.js"></script>
+    <script src="js\youtubeAPI.js"></script>
+    <script src="js\worker.js"></script>
+    <script src="js\worker1.js"></script>
+    <script src="js\typing.js"></script>
+    <script src="js\showChart.js"></script>
+    <script src="js\setting.js"></script>
+    <script src="js\keyboardShortcut.js"></script>
+    <script src="js\showTypesData.js"></script>
+</body>
+</html>
