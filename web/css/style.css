@@ -182,3 +182,25 @@ div#kashiA{
     margin-left: 0.1em;
     border-bottom: solid 1px rgb(222, 222, 222);;
 }
+
+/*ランキング表示*/
+#ranking > ol > li{
+    display: flex;
+    align-items: center;
+}
+
+.ranking_score,.ranking_name{
+    font-size : 2em;
+}
+
+.ranking_score{
+    margin-right: 1.5em;
+}
+
+.ranking_name{
+    margin-left: 0.25em;
+}
+.ranking_icon{
+    height: 3em;
+}
+/*ランキング表示ここまで*/

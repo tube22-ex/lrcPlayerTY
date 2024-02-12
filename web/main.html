@@ -6,6 +6,11 @@
     <script type="text/javascript" src="/eel.js"></script>
     <script src="js\keygraph.js"></script>
     <script src="js\sound.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="js\firebase-js\firebase-setup.js"></script>
     <link rel="stylesheet" href="css\reset.css">
     <link rel="stylesheet" href="css\style.css">
     <title>lrcPlayer</title>
@@ -69,6 +74,9 @@
             </div>
         </div>
     </div>
+    <div id="rankingContents">
+        <div id="ranking"></div>
+    </div>
     <div id="controlPanel">
         <button id="FileNameGetBtn">全ファイル取得</button>
         <input type="number" id="searchNumber"><button id="searchBtn">取得</button>
@@ -81,7 +89,21 @@
         <textarea id = "kashi" cols="30" rows="10"></textarea><br>
         <textarea id = "yomi" cols="30" rows="10"></textarea><br>
         <textarea id = "url" cols="30" rows="10"></textarea>
-    
+    </div>
+    <div id="accountContents">
+        <div id="sign-in">
+            <button id="login-logout-button">ログイン</button><br>
+                <label for="input_icon">
+                    <input id="input_icon" type="file">アイコンを変更
+                </label>
+                <label for="name_input" id="name">名前設定：
+                    <input name="name_input" type="text">
+                </label>
+        </div>
+        <div id="account">
+            <span id="display_name"></span>
+            <img id="icon" src="" alt="">
+        </div>
     </div>
     <script src="js\init.js"></script>
     <script src="js\script.js"></script>
@@ -96,5 +118,8 @@
     <script src="js\setting.js"></script>
     <script src="js\keyboardShortcut.js"></script>
     <script src="js\showTypesData.js"></script>
+    <script src="js\firebase-js\Authentication.js"></script>
+    <script src="js\firebase-js\firebase-ranking.js"></script>
+    <script src="js\result.js"></script>
 </body>
 </html>

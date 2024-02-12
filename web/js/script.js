@@ -26,6 +26,7 @@ async function NFileNameReq(e){
         auto = true;
     }
     played_chartID = n;
+    show_ranking(n)
     const [fileName,dataDict] = await eel.fileSearch(n)();
     //writeFileName(fileName);
     console.log(n)

@@ -28,7 +28,8 @@ let typesDataObj = {
     speed:[],
     AllSpeed:0,
     Acc:0,
-    LineRemaining:0
+    LineRemaining:0,
+    playlog:[]
 };
 
 let fixedKPS,fixedKPM,KPS//global
@@ -93,6 +94,7 @@ function keyFunc(e){
                 sound.play();
                 lineDataObj["Types"]++;
                 typesDataObj["Types"]++;
+                typesDataObj["playlog"].push({"KEY":e.key,"TIME":Time(true),isMatch:true});
                 if( keygraph.is_finished() && yomiArea.innerText){
                     // すべてのキーが入力された場合
                     yomiA.style.color = '#1eff52';
@@ -105,8 +107,9 @@ function keyFunc(e){
                 miss_sound.play();
                 lineDataObj["Miss"]++;
                 typesDataObj["Miss"]++;
+                typesDataObj["playlog"].push({"KEY":e.key,"TIME":Time(true),isMatch:false});
         }
-        disp();
+           disp();
     }
     if(e.code === 'Space' && keygraph.is_finished()){
         skip();

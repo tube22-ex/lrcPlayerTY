@@ -61,6 +61,9 @@ function onPlayerStateChange(event) {
     else if(event.data == YT.PlayerState.ENDED) {
         clearInterval(time_interval);
         is_play = false;
+        Result()
+        //リザルト＆登録
+        console.log(typesDataObj["playlog"])
     }
 }
 
