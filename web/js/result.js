@@ -41,6 +41,7 @@ function Result(){
             }
             //名前があるかどうか
         }
+        alert("ランキングに登録しました")
         //played_chartIDがあるかどうか
     });
 }
