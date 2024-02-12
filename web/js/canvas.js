@@ -26,7 +26,6 @@ class CanvasDrawer {
     }
 }
 
-// 利用例
 const speedDrawer = new CanvasDrawer('canvas', 0.10);
 const timeDrawer = new CanvasDrawer('canvas1', 0.13);
 

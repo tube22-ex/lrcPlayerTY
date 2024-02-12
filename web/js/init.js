@@ -65,7 +65,10 @@ let kanaLen = 0;
 const shortcutList = [
     "Space",
     "F4",
-    "F10"
+    "F10",
+    "Escape",
+    "ArrowUp",
+    "ArrowDown"
 ]
 //入力にショートカットが含まれているか判定用リスト
 let videoSpeedAry = [

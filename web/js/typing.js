@@ -36,8 +36,8 @@ let fixedKPS,fixedKPM,KPS//global
 function calculateSpeedATime(){
     if(!keygraph.is_finished()){
         let Ctime = setCurrentTime() - preTime();
-        KPS = lineDataObj["Types"] / Ctime;
-        let KPM = KPS * 60
+        KPS = (lineDataObj["Types"] / (Ctime /  videoSpeedAry[playSpeedIndex]));
+        let KPM = KPS * 60;
         fixedKPS = KPS.toFixed(2);
         fixedKPM = KPM.toFixed(0);
         if(isNaN(Ctime)){
@@ -45,7 +45,7 @@ function calculateSpeedATime(){
         }
         AllspeedCalc(KPS);
     }
-    let fixedtiem = (nextTime() - setCurrentTime()).toFixed(1);
+    let fixedtiem = ((nextTime() - setCurrentTime()) / videoSpeedAry[playSpeedIndex]).toFixed(1);
     drawSpeed(`残り${fixedtiem}秒 - ${fixedKPS}KPS - ${fixedKPM}KPM`)
 }
 
@@ -86,6 +86,7 @@ function keyFunc(e){
     }
     if(shortcutList.includes(e.key)){
         shortcut(e.key)
+        e.preventDefault();
     }else if(is_play){
         if( keygraph.next(e.key) ){
                 // 正解の場合
@@ -107,8 +108,8 @@ function keyFunc(e){
         }
         disp();
     }
-    if(shortcutList.includes(e.code) && keygraph.is_finished()){
-        shortcut(e.code)
+    if(e.code === 'Space' && keygraph.is_finished()){
+        skip();
     }
     //ショートカット
 

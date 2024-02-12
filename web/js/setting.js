@@ -36,6 +36,7 @@ videoSoundRange.addEventListener('input', (e) => {
     player.setVolume(videoVolume);
 });
 
+
 settingFileLoad();
 //音関係
 
