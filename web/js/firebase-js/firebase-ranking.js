@@ -32,7 +32,7 @@ function show_ranking(id){
         for (const Array of rank_Array) {
               const data = await getProfile(Array["NAME"]);
               const toFixedScore = (Math.round((Array["Score"] / 2000) * 100) / 100).toFixed(2);
-              const liHTML = `<li ><span id="${Array["NAME"]}" 1class="ranking_score">${toFixedScore}</span><div class="ranking_icondiv"><img src="${data["iconURL"]}" class="ranking_icon"></div><span class="ranking_name">${data["dispName"]}<span></li>`;
+              const liHTML = `<li ><span id="${Array["NAME"]}" class="ranking_score">${toFixedScore}</span><div class="ranking_icondiv"><img src="${data["iconURL"]}" class="ranking_icon"></div><span class="ranking_name">${data["dispName"]}<span></li>`;
               
               document.getElementById('ranking_ol').insertAdjacentHTML("beforeend", liHTML);
         }

@@ -10,7 +10,7 @@ const firebaseConfig = {
     };
     
 
-// Firebaseアプリの初期化
+//初期化
 firebase.initializeApp(firebaseConfig);
 
 const provider = new firebase.auth.GoogleAuthProvider();

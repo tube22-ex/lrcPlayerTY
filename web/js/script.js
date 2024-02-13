@@ -107,15 +107,12 @@ function resetValues(obj) {
     for (const key in obj) {
         if (obj.hasOwnProperty(key)) {
             const value = obj[key];
-
             if (Array.isArray(value)) {
                 // 配列の場合、配列を空にする
                 obj[key] = [];
             } else if (typeof value === 'object') {
-                // オブジェクトの場合、再帰的に処理
                 resetValues(value);
             } else {
-                // それ以外の場合、値を0にする
                 obj[key] = 0;
             }
         }

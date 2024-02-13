@@ -1,5 +1,6 @@
 const pattern = /\[(\d{2}:\d{2}\.\d{2})\]/;
 const pattern1 = /\[(\d{2}:\d{2}\.\s\d)\]/;
+const pattern2 = /\[(\d{2}:\d{2}:\d{2})\]/;
 function htmlDecode(input) {
     var doc = new DOMParser().parseFromString(input, "text/html");
     return doc.documentElement.textContent;
@@ -19,7 +20,7 @@ function aryToObj(lrc,videoID,type){
     const arrObj = [];
     lines.forEach(line => {
         let match
-        if ((match = line.match(pattern)) || (match = line.match(pattern1))) {
+        if ((match = line.match(pattern)) || (match = line.match(pattern1)) || (match = line.match(pattern2))) {
             const [fullMatch, T] = match;
             const index = line.indexOf(fullMatch);
             const timeTag = line.substring(index, index + fullMatch.length);

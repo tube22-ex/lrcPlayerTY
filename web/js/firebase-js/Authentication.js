@@ -12,16 +12,15 @@ function firebaseFunc(){
 
     uploadTask.on("state_changed",
     (snapshot) => {
-        // アップロード中の進捗を監視
+        // アップロード進捗
         const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log("アップロード進捗: " + progress + "%");
     },
     (error) => {
-        // エラーハンドリング
         console.error("アップロードエラー: " + error);
       },
     () => {
-        // アップロードが完了したときの処理
+        // アップロード終わった時の処理
         console.log("アップロードが完了しました");
 
         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
@@ -33,7 +32,7 @@ function firebaseFunc(){
             const user = auth.currentUser;
             updateAccountData(user.uid, user.displayName, user.photoURL)
         }).catch(function (error) {
-            console.error("プロフィール情報の更新エラー: " + error);
+            console.error("更新エラー: " + error);
         });
         });
 
