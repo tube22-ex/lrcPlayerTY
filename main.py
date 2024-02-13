@@ -67,6 +67,5 @@ def py_change_volume(sound_data):
     print("volume:",volume)
 
 eel.init("web")
-eel.js_test()
 eel.start("main.html")
 

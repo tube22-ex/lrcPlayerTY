@@ -22,7 +22,6 @@ function playFunc(videoID,type){
         lyrics = JSON.parse(lyrics);
     }
     lrcObj = lyrics
-    console.log(lrcObj)
 }
 
 myWorker.onmessage = function(e){

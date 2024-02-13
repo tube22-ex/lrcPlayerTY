@@ -4,7 +4,7 @@ function shortcut(key){
             skip();
             break;
         case "F4":
-            restart();
+            TypingInitialization(true);
             break;
         case "F10":
             playSpeedChanger();
@@ -45,10 +45,6 @@ function skip(){
     if(nextTime() - Time(true) > 3){
         player.seekTo(nextTime() - 3);
     }
-}
-
-function restart(){
-    NFileNameReq({type:"restart", num:played_chartID});
 }
 
 let playSpeedIndex = 3;

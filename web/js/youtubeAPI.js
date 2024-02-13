@@ -63,27 +63,17 @@ function onPlayerStateChange(event) {
         is_play = false;
         Result()
         //リザルト＆登録
-        console.log(typesDataObj["playlog"])
     }
 }
 
-function video_set(videoID,autoStart=false){
+function video_set(videoID){
     player.setVolume(videoVolume)
     player.cueVideoById(videoID);
     lycIndex = 0;
     player.seekTo(0);
-    playFunc(videoID,"def");
-    myWorker.postMessage({ type: 'Lyrics', lyrics: lrcObj });
-    //Workerに歌詞をセット
-    playFunc(videoID,'YOMI');
-    myWorker1.postMessage({ type: 'Lyrics', lyrics: lrcObj });
-    //Worker1に読みをセット
     if(is_playFirstclick){
         is_playFirstclick = false;
         keygraph.build('');
-    }
-    if(autoStart){
-        setTimeout(()=>player.playVideo(),300)
     }
 }
 

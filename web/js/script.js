@@ -14,26 +14,19 @@ async function FileNameReq(){
 
 async function NFileNameReq(e){
     let n;
-    let auto = false;
+    played_chartID = n;
     if(e.type === 'search'){
         n = document.getElementById('searchNumber').value;
     }
     else if(e.type === 'click'){
         n = e.num;
     }
-    else if(e.type === 'restart'){
-        n = e.num;
-        auto = true;
-    }
-    played_chartID = n;
-    show_ranking(n)
+    show_ranking(n);
     const [fileName,dataDict] = await eel.fileSearch(n)();
-    //writeFileName(fileName);
-    console.log(n)
-    writeLrc(dataDict,auto)
+    writeLrc(dataDict)
 }
 
-function writeLrc(data,autoStart = false){
+function writeLrc(data){
     kashi.value = data["KASHI"];
     yomi.value = data["YOMI"];
     url.value = data["URL"]
@@ -42,9 +35,30 @@ function writeLrc(data,autoStart = false){
         aryToObj(data["KASHI"],videoID,"def");
         aryToObj(data["YOMI"],videoID,"YOMI");
     }
-    video_set(videoID,autoStart);
+    video_set(videoID);
+    playFunc(videoID,"def");
+    myWorker.postMessage({ type: 'Lyrics', lyrics: lrcObj });
+    //Workerに歌詞をセット
+    playFunc(videoID,'YOMI');
+    myWorker1.postMessage({ type: 'Lyrics', lyrics: lrcObj });
+    //Worker1に読みをセット
+    TypingInitialization();
+}
+
+function TypingInitialization(autoStart = false){
     workerset();
     Datareset();
+    lycIndex = 0;
+    player.seekTo(0);
+    if(autoStart){
+        setTimeout(()=>{
+            keygraph.build('');
+            disp();
+            kashiA.innerHTML = '';
+            nextA.innerHTML = "NEXT: "
+            player.playVideo()
+        },200)
+    }
     myWorker.postMessage({ type: 'set', videoTime: player.getDuration() })
 }
 
@@ -53,13 +67,6 @@ function workerset(){
     myWorker1.postMessage({ type: 'reset'});
 }
 
-/*
-eel.expose(js_test)
-function js_test(){
-    alert("PYから呼び出された")
-    eel.py_test();
-}
-*/
 function writeFileName(files, YTURLObj){ 
     chartAry = []
     ContentArea.innerHTML = '';
