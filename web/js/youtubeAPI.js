@@ -4,7 +4,9 @@ let firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 const intervalRate = 20;//ms
+const intervalLowRate = 100;
 let time_interval;
+let time_interval_Lowrate;
 
 function onYouTubeIframeAPIReady() {
 
@@ -44,22 +46,28 @@ function Time(get){
     if(get){
         return currentTime
     }
-    calculateSpeedATime()
+}
+
+function Time_low(){
+    const currentTime = player.getCurrentTime();
     progressValueSet(currentTime)
-    //showLyrics(currentTime)
+    calculateSpeedATime()
 }
 
 function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.PLAYING) {
         is_play = true;
         time_interval = setInterval(Time,intervalRate);
+        time_interval_Lowrate = setInterval(Time_low,intervalLowRate);
     }
     else if (event.data == YT.PlayerState.PAUSED) {
         is_play = false;
         clearInterval(time_interval);
+        clearInterval(time_interval_Lowrate);
     }
     else if(event.data == YT.PlayerState.ENDED) {
         clearInterval(time_interval);
+        clearInterval(time_interval_Lowrate);
         is_play = false;
         Result()
         //リザルト＆登録
