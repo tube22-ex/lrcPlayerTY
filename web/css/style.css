@@ -212,3 +212,13 @@ div#kashiA{
     height:100%;
 }
 /*ランキング表示ここまで*/
+#settingArea{
+    display:none;
+}
+#showSettingBtn{
+    font-size: 3em;
+    line-height: 1em;
+    width: 1em;
+    height: 1em;
+    border-radius: 1em;
+}

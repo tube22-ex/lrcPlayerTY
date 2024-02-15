@@ -16,6 +16,7 @@
     <title>lrcPlayer</title>
 </head>
 <body>
+    <button id="showSettingBtn">⚙</button>
     <div id="settingArea">
         <div id="missSoundvolume">
             <input type="range" id="missSoundRange" min="0" max="1" step="0.01">
@@ -32,10 +33,10 @@
             タイプ音量：<span id="typeSoundVolumeValue"></span>
             <input type="checkbox" id="typeSoundCheckbox">
         </div>
-        <div id="videoSoundvolume">
-            <input type="range" id="videoSoundRange" min="0" max="100" step="1">
-            動画音量：<span id="videoSoundVolumeValue"></span>
-        </div>
+    </div>
+    <div id="videoSoundvolume">
+        <input type="range" id="videoSoundRange" min="0" max="100" step="1">
+        動画音量：<span id="videoSoundVolumeValue"></span>
     </div>
     <div id="youtubePlayer">
         <div id="player"></div>

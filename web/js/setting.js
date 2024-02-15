@@ -42,3 +42,11 @@ settingFileLoad();
 
 document.getElementById('searchNumber').addEventListener('focus',()=>is_input = true)
 document.getElementById('searchNumber').addEventListener('blur',()=>is_input = false)
+document.getElementById('showSettingBtn').addEventListener('click',()=>{
+    const settingArea = document.getElementById('settingArea');
+    if(settingArea.style.display === 'block'){
+        settingArea.style.display = 'none';
+    }else{
+        settingArea.style.display = 'block';
+    }
+})
