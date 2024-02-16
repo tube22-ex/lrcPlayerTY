@@ -23,7 +23,7 @@ document.addEventListener('keydown',(e)=>{
 
 class Kanaty{
     constructor(){
-        this.kanaList = [
+        this.kanaCharacters = [
             "ゔ",
             "が",
             "ぎ",
@@ -220,21 +220,14 @@ class Kanaty{
             "?":["Slash",true],
             "_":["IntlRo",true],
         }
-        this.setEventListener();
-    }
-
-    setEventListener(){
-        document.addEventListener('keydown',(e)=>{
-            console.log(e.code)
-        })
     }
 
     build(text){
-        this.correctAry = [];
+        this.typedCharacters = [];
         const char = [...text]
         let ary = [];
         char.forEach((c)=>{
-            if(this.kanaList.includes(c)){
+            if(this.kanaCharacters.includes(c)){
                 let [a,b] = c.normalize('NFD');
                 if(b.codePointAt(0) === 12441){
                     b = "゛";
@@ -254,18 +247,14 @@ class Kanaty{
 
     Allromaconvart(){
         let AllromaAry = [];
-        console.log(this.kanaconvartList["'"])
-        console.log(this.ary)
         this.ary.forEach((c)=>{
             if(Object.keys(this.kanaconvartList).includes(c)){
                 AllromaAry.push(this.kanaconvartList[c]);
-                console.log(c,this.kanaconvartList[c])
             }else{
                 AllromaAry.push(c)
             }
         })
         this.AllromaAry = AllromaAry;
-        console.log(this.AllromaAry)
     }
 
     nextkey(){
@@ -273,7 +262,7 @@ class Kanaty{
     }
 
     correct(){
-        this.correctAry.push(this.ary[0])
+        this.typedCharacters.push(this.ary[0])
         this.AllromaAry.shift();
         this.ary.shift();
     }
@@ -283,7 +272,7 @@ class Kanaty{
     }
 
     seq_done(){
-        return this.correctAry.join("");
+        return this.typedCharacters.join("");
     }
 
     is_finished(){
