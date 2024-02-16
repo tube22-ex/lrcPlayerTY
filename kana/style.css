@@ -1,9 +1,0 @@
-#kanaA{
-    color:aqua
-}
-
-#kana{
-    display: flex;
-    overflow: hidden;
-    white-space: pre;
-}
