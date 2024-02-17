@@ -22,10 +22,13 @@ function Result(){
         let displayName = localStorage.getItem('displayName')
         let appdata = snapshot.val();
         if(!appdata){
-            let data = {};
-            data[played_chartID] = {};
-            data[played_chartID][uid] = {};
-            data[played_chartID][uid][0] = ResultData(uid,displayName);
+            let data = {
+                [played_chartID]: {
+                  [uid]: {
+                    0: ResultData(uid,displayName)
+                  }
+                }
+              };
             DB.ref().update(data);
         }else{
             if(appdata[uid]){

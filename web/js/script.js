@@ -14,13 +14,13 @@ async function FileNameReq(){
 
 async function NFileNameReq(e){
     let n;
-    played_chartID = n;
     if(e.type === 'search'){
         n = document.getElementById('searchNumber').value;
     }
     else if(e.type === 'click'){
         n = e.num;
     }
+    played_chartID = n;
     show_ranking(n);
     const [fileName,dataDict] = await eel.fileSearch(n)();
     writeLrc(dataDict)
