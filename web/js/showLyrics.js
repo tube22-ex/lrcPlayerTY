@@ -12,11 +12,21 @@ function playFunc(videoID,type){
             cnt += element["LYRICS"].length;
             lyrcsStr+=element["LYRICS"];
         });
-        keygraph.build(lyrcsStr);
-        Score_per_char = 200000 / keygraph.key_candidate().length;
-        Score_per_char_kana = 200000 / cnt;
-        kanaLen = cnt;
-        keygraph.build('');
+        if(playmode === 0){
+            keygraph.build(lyrcsStr);
+            Score_per_char = 200000 / keygraph.key_candidate().length;
+            Score_per_char_kana = 200000 / cnt;
+            kanaLen = cnt;
+            keygraph.build('');
+        }
+        else if(playmode === 1){
+            KANA.build(lyrcsStr)
+            Score_per_char = 200000 / KANA.len();
+            Score_per_char_kana = 200000 / cnt;
+            kanaLen = cnt;
+            KANA.build('');
+        }
+
     }else{
         lyrics = sessionStorage.getItem(videoID);
         lyrics = JSON.parse(lyrics);
@@ -55,8 +65,14 @@ myWorker1.onmessage = function(e){
     const K = e.data.RESULT.toLowerCase();
     is_kanalyrics = K !== '' ? true : false;
     lineDataReset()
-    keygraph.build(K);
-    disp();
+    if(playmode === 0){
+        keygraph.build(K);
+        disp();
+    }else if(playmode === 1){
+        KANA.build(K);
+        kanaDisp();
+    }
+
     dataDisp(); 
     yomiA.style.color = '#0099CC';
     romaA.style.color = '#0099CC';

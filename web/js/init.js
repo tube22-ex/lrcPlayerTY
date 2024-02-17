@@ -32,6 +32,7 @@ const lrcArea = document.getElementById('lrcArea');
 const kashi = document.getElementById('kashi');
 const yomi = document.getElementById('yomi');
 const url = document.getElementById('url');
+const modeSelect = document.getElementById('modeSelect');
 //その他DOM
 
 const myWorker = new Worker('js\\worker.js');
@@ -53,7 +54,11 @@ miss_sound.init();
 //効果音
 
 keygraph.build('');
+KANA.build('');
 //一旦空でビルド
+
+let playmode = 0
+//入力モード0 = ロマ,1 = かな
 
 let Score_per_char = 0;
 let Score_per_char_kana = 0;

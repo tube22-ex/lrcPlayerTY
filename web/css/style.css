@@ -222,3 +222,23 @@ div#kashiA{
     height: 1em;
     border-radius: 1em;
 }
+
+#modeSelect{
+    display:none;
+}
+#moderoma,#modekana{
+    display:none
+}
+#modeSelect > div > label{
+    border:solid 1px black;
+    height: 1.5em;
+    text-align: center;
+}
+
+#moderoma:checked + label{
+    background-color: #17a3b8d2!important;
+}
+#modekana:checked + label{
+    background-color: #de781fde!important;
+}
+/*ボタン系*/

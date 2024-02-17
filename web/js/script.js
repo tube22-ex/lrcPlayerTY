@@ -36,6 +36,8 @@ function writeLrc(data){
         aryToObj(data["YOMI"],videoID,"YOMI");
     }
     video_set(videoID);
+    modeSelect.style.display = 'flex';
+    playmode = playModeSelect()
     playFunc(videoID,"def");
     myWorker.postMessage({ type: 'Lyrics', lyrics: lrcObj });
     //Workerに歌詞をセット
@@ -43,6 +45,17 @@ function writeLrc(data){
     myWorker1.postMessage({ type: 'Lyrics', lyrics: lrcObj });
     //Worker1に読みをセット
     TypingInitialization();
+}
+
+function playModeSelect(){
+    kanaDisp();
+    disp();
+    let SelectElements = modeSelect.querySelectorAll('input[type="radio"]');
+    for(i of SelectElements){
+        if(i.checked){
+            return Number(i.value);
+        }
+    }
 }
 
 function TypingInitialization(autoStart = false){

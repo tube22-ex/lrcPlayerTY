@@ -79,6 +79,7 @@ function video_set(videoID){
     player.cueVideoById(videoID);
     lycIndex = 0;
     player.seekTo(0);
+    modeSelect.style.display = 'none'
     if(is_playFirstclick){
         is_playFirstclick = false;
         keygraph.build('');
