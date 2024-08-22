@@ -1,5 +1,6 @@
 /*
-ビルド  KANA.build();
+ビルド  KANA.build('');
+
 const kanaDisp = () => {
     kanaA.textContent = KANA.seq_done();//打ち終わった文字
     kanaB.textContent = KANA.seq_candidates();//これから打つ文字
@@ -13,6 +14,7 @@ document.addEventListener('keydown',(e)=>{
         console.log("正解")
         if(KANA.is_finished()){
             console.log('完走')
+            kanaA.style.color = '#1eff52';
         }
     }else{
         console.log("ミス")
@@ -219,14 +221,16 @@ class Kanaty{
             ">":["Period",true],
             "?":["Slash",true],
             "_":["IntlRo",true],
+            //特殊キー
+            " ":["Space",false],
+            "’":["Digit7",true],
         }
     }
-
+/*
     build(text){
         this.typedCharacters = [];
-        const char = [...text]
         let ary = [];
-        char.forEach((c)=>{
+        [...text].forEach((c)=>{
             if(this.kanaCharacters.includes(c)){
                 let [a,b] = c.normalize('NFD');
                 if(b.codePointAt(0) === 12441){
@@ -244,6 +248,22 @@ class Kanaty{
         this.ary = ary;
         this.Allromaconvart();
     }
+*/
+    build(text) {
+        this.typedCharacters = [];
+        let ary = [...text].map((c) => {
+            if (this.kanaCharacters.includes(c)) {
+                let [a, b] = c.normalize('NFD');
+                b = (b.codePointAt(0) === 12441) ? "゛" : "゜";
+                return [a, b];
+            } else {
+                return c;
+            }
+        }).flat(); // 配列をフラット化
+        this.kanalen = ary.length;
+        this.ary = ary;
+        this.Allromaconvart();
+    }   
 
     Allromaconvart(){
         let AllromaAry = [];

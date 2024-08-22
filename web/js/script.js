@@ -81,13 +81,17 @@ function workerset(){
 }
 
 function writeFileName(files, YTURLObj){ 
-    chartAry = []
+    const chartAry = [];
     ContentArea.innerHTML = '';
     ChartContents.innerHTML = '';
     ContentArea.insertAdjacentHTML("beforeend", `<div id="len"></div>`);
     const len = document.getElementById('len');
-    const fileLen = files.length / 3
-    files.forEach((f) => {
+    const fileLen = files.length / 3;
+
+    let index = 0;
+    let ele = '';
+    const maxArySize = 50;
+    for(const f of files){
         const fileName = f
         if(fileName.search(/(youtubeURL.txt|（読み）)/) == -1){
         /*仮         譜面番号のみ表示
@@ -95,27 +99,39 @@ function writeFileName(files, YTURLObj){
        */
         videoURL = YTURLObj[fileName.slice(0,fileName.indexOf("_"))]
         const html = new Html(fileName, videoURL);
-        chartAry.push(html.chart());
+        ele += html.chart();
+        console.log(ele);
+        if((index % maxArySize == 0 && index) || (fileLen - index < maxArySize)){
+            //１配列にいれる個数になったら配列にいれる or 残りが1配列にいれる個数より下回ったら配列にいれる
+            //→多分残りを全部いれる設計の方が良い
+            chartAry.push([ele]);
+            ele = '';
         }
-    });
+        index++;
+        }
+    }
+
 
     async function addElement(){
-        let cnt = 0;
-        for (const element of chartAry) {
-            await new Promise(resolve => setTimeout(resolve, 10));
-            ChartContents.insertAdjacentHTML("beforeend", element);
-            cnt++
-            len.textContent = `${fileLen}件中${cnt}件表示中`;
-        }
+        for(const elements of chartAry){
+            for(const element of elements){
+                await new Promise(resolve => setTimeout(resolve, 50));//50ms待機
+                ChartContents.insertAdjacentHTML("beforeend", element);
 
-        const divItem = ChartContents.querySelectorAll('div.item');
-        divItem.forEach((ele)=>{
-            ele.addEventListener('click',()=>{
-                NFileNameReq({type:"click", num : ele.getAttribute('chartid')})
-            })
-        })
+            }
+        }
+        len.textContent = `${fileLen}件表示中`;
+
+        ChartContents.addEventListener('click',(e)=>{
+            NFileNameReq({type:"click", num : e.target.closest('.item').getAttribute('chartid')});
+            window.scroll({
+                top: 0,
+                behavior: "smooth",
+            });
+        });
     }
     addElement();
+
 }
 
 function Datareset(){

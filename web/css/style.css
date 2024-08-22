@@ -38,7 +38,18 @@ div#ChartContents{
     height: 80vh;
     overflow-y: scroll;
     overflow-x: hidden;
+    direction: rtl;
 }
+
+div#ChartContents::-webkit-scrollbar {
+    width: 30px;
+    height: 200px;
+}
+
+#ChartContents::-webkit-scrollbar-thumb {
+    background: #00608d;
+}
+
 div.item{
     border: 1px solid rgb(0, 255, 38);
     padding: 1px 5px;

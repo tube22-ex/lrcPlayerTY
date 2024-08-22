@@ -17,7 +17,6 @@ class Html{
 }
 譜面番号出したいとき用
 */
-let chartAry = []
 class Html{
     constructor(TITLE,VIDEOURL){
         const VIDEOID = VIDEOURL.slice(VIDEOURL.indexOf("watch?v=") + 8);
